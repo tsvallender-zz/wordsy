@@ -18,7 +18,7 @@ function deal() {
     let table = document.getElementById(('table'));
     if ( turn == 1) {
 		for (let i = 1; i <= 8; i++) {
-            document.getElementById(i).innerHTML = deck.pop();
+            placeCard(i);
          }
     } else {
         // Move cards along
@@ -27,9 +27,27 @@ function deal() {
         }
         // Deal four more
         for (let i = 5; i <= 8; i++) {
-            document.getElementById(i).innerHTML = deck.pop()
+            placeCard(i);
         }
     }
+}
+
+function canPlace(c) {
+    let charCount = 0;
+	for (let i = 1; i <= 8; i++) {
+		if (document.getElementById(i).innerHTML == c) {
+            charCount++;
+        }
+    }
+    return charCount >= 2 ? false : true;
+}
+
+function placeCard(i) {
+    let c;
+    do
+    	c = deck.pop()
+    while (!canPlace(c));
+	document.getElementById(i).innerHTML = c;
 }
 
 let turn = 0;
@@ -52,4 +70,4 @@ let bonusPoints = {
     z: 2,
 }
 
-setup();
+//setup();
