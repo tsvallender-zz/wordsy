@@ -18,6 +18,7 @@ th, td {
     text-align: center;
     text-transform: uppercase;
     background-color: #edb;
+    position: relative;
 }
 tfoot tr th {
     padding: 0.1em 0.4em;
@@ -27,4 +28,15 @@ button {
     padding: 1em;
     text-align: center;
     border-radius: 0.5em;
+}
+
+.bonusPoints {
+    background-color: green;
+    color: white;
+    border-radius: 1em;
+    font-size: 0.3em;
+    padding: 0.1em;
+    position: absolute;
+    bottom: 2px;
+    right: 2px;
 }

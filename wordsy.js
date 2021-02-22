@@ -37,6 +37,11 @@ function deal() {
     }
 }
 
+// Returns the character in a given box
+function getChar(i) {
+    return document.getElementById(i).innerHTML.charAt(0);
+}
+
 // Checks if a card can be legally placed
 function canPlace(c) {
     let charCount = 0;
@@ -46,7 +51,7 @@ function canPlace(c) {
     // Can't be more than two cards with bonus points
     if (c in bonusPoints) {
         for (let i = 1; i <= 8; i++) {
-            if (document.getElementById(i).innerHTML in bonusPoints) {
+            if (getChar(i) in bonusPoints) {
                 bonusCount++;
             }
         }
@@ -57,7 +62,7 @@ function canPlace(c) {
 
     // Can't be more than two of any one letter
 	for (let i = 1; i <= 8; i++) {
-        let char = document.getElementById(i).innerHTML;
+        let char = getChar(i);
 		if (char == c) {
             charCount++;
         }
@@ -71,6 +76,16 @@ function placeCard(i) {
     	c = deck.pop()
     while (!canPlace(c));
 	document.getElementById(i).innerHTML = c;
+    addPoints(i);
+}
+
+function addPoints(i) {
+    if (getChar(i) in bonusPoints) {
+        document.getElementById(i).innerHTML
+            += "<span class=\"bonusPoints\">+"
+            + bonusPoints[getChar(i)]            
+            +"</span>";
+    }
 }
 
 let turn = 0;
