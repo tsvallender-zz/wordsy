@@ -70,4 +70,4 @@ let bonusPoints = {
     z: 2,
 }
 
-//setup();
+setup();
