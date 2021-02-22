@@ -13,7 +13,12 @@ function setup() {
 function deal() {
     turn++;
     document.getElementById('turn').innerHTML = turn;
-    console.log('Dealing');
+    
+    if (turn == 7) {
+        // End of game, remove deal button
+        let button = document.getElementById('deal');
+        button.parentNode.removeChild(button);
+    }
 
     let table = document.getElementById(('table'));
     if ( turn == 1) {
@@ -32,15 +37,30 @@ function deal() {
     }
 }
 
+// Checks if a card can be legally placed
 function canPlace(c) {
     let charCount = 0;
     let bonusCount = 0;
+    let bonus = false;
+
+    // Can't be more than two cards with bonus points
+    if (c in bonusPoints) {
+        for (let i = 1; i <= 8; i++) {
+            if (document.getElementById(i).innerHTML in bonusPoints) {
+                bonusCount++;
+            }
+        }
+        if (bonusCount >= 2) {
+            return false;
+        }
+    }
+
+    // Can't be more than two of any one letter
 	for (let i = 1; i <= 8; i++) {
         let char = document.getElementById(i).innerHTML;
 		if (char == c) {
             charCount++;
         }
-        
     }
     return charCount >= 2 ? false : true;
 }
