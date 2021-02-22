@@ -23,10 +23,10 @@ function deal() {
     } else {
         // Move cards along
 		for (let i = 1; i <= 4; i++) {
-            document.getElementById(i).innerHTML = document.getElementById(i + 4).innerHTML;
+            document.getElementById(i + 4).innerHTML = document.getElementById(i).innerHTML;
         }
         // Deal four more
-        for (let i = 5; i <= 8; i++) {
+        for (let i = 1; i <= 4; i++) {
             placeCard(i);
         }
     }
@@ -34,10 +34,13 @@ function deal() {
 
 function canPlace(c) {
     let charCount = 0;
+    let bonusCount = 0;
 	for (let i = 1; i <= 8; i++) {
-		if (document.getElementById(i).innerHTML == c) {
+        let char = document.getElementById(i).innerHTML;
+		if (char == c) {
             charCount++;
         }
+        
     }
     return charCount >= 2 ? false : true;
 }
