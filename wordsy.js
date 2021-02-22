@@ -12,7 +12,7 @@ function setup() {
 
 function deal() {
     turn++;
-    document.getElementById('turn').innerHTML = turn;
+    document.getElementById('turn').innerHTML = "Round: " + turn;
     
     if (turn == 7) {
         // End of game, remove deal button
