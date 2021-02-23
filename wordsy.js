@@ -11,16 +11,6 @@ function setup() {
 }
 
 function deal() {
-    turn++;
-    document.getElementById('turn').innerHTML = "Round: " + turn;
-    document.getElementById('timer').innerHTML = "Start timer";
-    
-    if (turn == 7) {
-        // End of game, remove deal button
-        let button = document.getElementById('deal');
-        button.parentNode.removeChild(button);
-    }
-
     let table = document.getElementById(('table'));
     if ( turn == 1) {
 		for (let i = 1; i <= 8; i++) {
@@ -99,6 +89,41 @@ function startTimer() {
             document.getElementById('timer').innerHTML = t;
         }, 1000);
     }
+}
+
+function nextRound() {
+    turn++;
+    document.getElementById('turn').innerHTML = "Round: " + turn;
+    document.getElementById('timer').innerHTML = "Start timer";
+    
+    if (turn == 7) {
+        // End of game, remove deal button
+        let button = document.getElementById('deal');
+        button.parentNode.removeChild(button);
+    }
+
+    deal();
+
+    // Set round rules
+    let bonus = 0;
+    switch(turn) {
+        case 1:
+        case 2:
+        case 3:
+            bonus = 1;
+            break;
+        case 4:
+        case 5:
+        case 6:
+            bonus = 2;
+            break;
+        case 7: 
+            bonus = 3;
+            break;
+    }
+    document.getElementById('roundRules').innerHTML
+        = "+"+bonus+" bonus for beating the fastest player or +" 
+        + ++bonus + " for the fastest player.";
 }
 
 let turn = 0;

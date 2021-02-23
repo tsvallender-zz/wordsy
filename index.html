@@ -9,7 +9,7 @@
     <body>
         <h1>Wordsy</h1>
         <div id="topMatter">
-            <button onclick="deal()" id="deal">Deal</button>
+            <button onclick="nextRound()" id="deal">Deal</button>
             <button onclick="startTimer()" id="timer">Start timer</button>
     	    <h2 id="turn">Round: </h2>
         </div>
@@ -35,5 +35,10 @@
             </tr>
         </tfoot></table>
         </table>
+
+        <div id="rules">
+            <a href="rules.pdf">Official rules</a>
+            <p id="roundRules"></p>
+        </div>
     </body>
 </html>

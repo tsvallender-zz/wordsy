@@ -39,12 +39,22 @@ button {
     margin-left: auto;
 }
 
+#rules {
+    background-color: #edb;
+    border: 1px solid brown;
+    border-radius: 1em;
+    width: 80%;
+    margin: 0 auto;
+    padding: 0.5em;
+}
+
 table {
     border: 1px solid black;
     padding: 1em;
     background-color: brown;
     width: 100%;
     border-spacing: 1em;
+    margin-bottom: 1em;
 }
 th, td {
     border: 1px solid black;
