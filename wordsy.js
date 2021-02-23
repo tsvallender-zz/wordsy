@@ -13,6 +13,7 @@ function setup() {
 function deal() {
     turn++;
     document.getElementById('turn').innerHTML = "Round: " + turn;
+    document.getElementById('timer').innerHTML = "Start timer";
     
     if (turn == 7) {
         // End of game, remove deal button
@@ -85,6 +86,18 @@ function addPoints(i) {
             += "<span class=\"bonusPoints\">+"
             + bonusPoints[getChar(i)]            
             +"</span>";
+    }
+}
+
+function startTimer() {
+    if (document.getElementById('timer').innerHTML == 'Start timer') {
+        let t = 30;
+        let x = setInterval(function() {
+            if (t-- <= 1) {
+                clearInterval(x);
+            }
+            document.getElementById('timer').innerHTML = t;
+        }, 1000);
     }
 }
 
