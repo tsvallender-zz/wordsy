@@ -80,11 +80,14 @@ function addPoints(i) {
 }
 
 function startTimer() {
+    var beep = new Audio('./beep.wav')
     if (document.getElementById('timer').innerHTML == 'Start timer') {
-        let t = 30;
+        let t = 5;
+        document.getElementById('timer').innerHTML = t;
         let x = setInterval(function() {
             if (t-- <= 1) {
                 clearInterval(x);
+                beep.play();
             }
             document.getElementById('timer').innerHTML = t;
         }, 1000);
